@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
+    <title></title>
+    <style>
+        
+    </style>
+</head>
+<body>
+<div id="app">
+    <input type="text" name="" v-model="text">
+    <button v-on:click="addText">提交</button>
+    <ul>
+        <todo-item 
+            v-bind:text="item" 
+            v-bind:index="index"
+            @delete="toDeleteItem"
+            v-for="(item,index) in list">
+        </todo-item>
+    </ul>
+</div>
+<script src="vue.js"></script>
+<script type="text/javascript">
+    var TodoItem = {
+        props:["text","index"],
+        template:"<li @click='clickItem'>{{text}}</li>",
+        methods:{
+            clickItem:function(){
+                this.$emit('delete',this.index)
+            }
+        }
+    }
+    var app = new Vue({
+        el:"#app",
+        components:{
+            TodoItem:TodoItem
+        },
+        data:{
+            list:[
+                "第一项",
+                "第二项"
+            ],
+            text:""
+        },
+        methods:{
+            addText:function(){
+                this.list.push(this.text);
+                this.text = ""
+            },
+            toDeleteItem:function(index) {
+                this.list.splice(index,1)
+            }
+        }
+    })
+</script>
+</body>
+</html>
