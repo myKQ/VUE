@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
+    <title></title>
+    <style>
+        
+    </style>
+</head>
+<body>
+<div id="app">
+    {{name}}
+    <!-- {{name()}} -->
+</div>
+<script src="vue.js"></script>
+<script type="text/javascript">
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            firstName:"zhang",
+            lastName:"qiang",
+            name:"zhang qiang"
+        },
+        // 侦听器
+        watch:{
+            firstName:function() {
+                this.name =  this.firstName + " " + this.lastName
+            },
+            lastName:function() {
+                this.name =  this.firstName + " " + this.lastName
+            }
+        }
+        // 方法
+        // methods:{
+        //     name:function() {
+        //         console.log('计算了一次')
+        //         return this.firstName + " " + this.lastName
+        //     }
+        // }
+        // 1，计算属性具有缓存机制，就是它所依赖的属性值未发生改变的情况下，就不再执行
+        // 2，watch和computed都有缓存机制
+        // 3，当计算属性和方法还有侦听器三者，都可以实现业务的时候，用计算属性更好，因为代码少且有缓存机制性能更高
+        // computed:{
+        //     name: function() {
+        //         console.log('计算了一次')
+        //         return this.firstName + " " + this.lastName
+        //     }
+        // }
+    })
+</script>
+</body>
+</html>
