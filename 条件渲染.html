@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
+    <title></title>
+</head>
+<body>
+<div id="app">
+    <div v-if="show">
+        用户名：<input key="name"/>
+    </div>
+    <div v-else>
+        密码：<input key="password"/>
+    </div>
+    <div v-show>{{content}}</div>
+</div>
+<script src="vue.js"></script>
+<script type="text/javascript">
+    // 1,v-show和v-if都可以显示隐藏元素，
+    //     但v-if是从dome结构上删除而v-show仅仅是隐藏，
+    //     因此频繁改变显隐状态时用v-show
+    // 2,v-if和v-eles使用时必须紧邻，中间不能插入其他dome元素
+    // 3，vue会尽量尝试保留页面中已有的dome结构，
+    //     因此如果两个相同的input框没有加key值的情况下，
+    //     页面变化不会清除里面的值
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            content:"hello world",
+            show:false
+        }
+    })
+</script>
+</body>
+</html>
