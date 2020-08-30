@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
+    <title></title>
+    <style>
+        /*.active {
+            color:red;
+        }*/
+    </style>
+</head>
+<body>
+<div id="app">
+    <!-- <div :class="{active:isActive}" @click="changClore">hello world</div> -->
+    <!-- <div :class="[active]" @click="changClore">hello world</div> -->
+    <div :style="active" @click="changClore">hello world</div>
+</div>
+<script src="vue.js"></script>
+<script type="text/javascript">
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            active: {
+                color:"black"
+            }
+        },
+        methods:{
+
+            // :class="{active:isActive}"
+            // changClore:function(){
+            //     this.isActive = !this.isActive
+            // }
+
+            // :class="[active]"
+            // changClore:function(){
+            //     this.active = this.active === "" ? "active" : ""
+            // }
+
+            changClore:function(){
+                this.active.color = this.active.color === "black" ? "red" : "black"
+            }
+        }
+    })
+</script>
+</body>
+</html>
