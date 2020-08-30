@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
+    <title></title>
+    <style>
+        
+    </style>
+</head>
+<body>
+<div id="app">
+   <!--  <template v-for="item of list" :key="item.id">
+        <div>{{item.text}}</div>
+        <span>{{item.text}}</span>
+    </template> -->
+    <template v-for="(value,key,index) of obj" :key="item.id">
+        <div>{{value}} --- {{key}} --- {{index}}</div>
+    </template>
+</div>
+<script src="vue.js"></script>
+<script type="text/javascript">
+    // 1，key不能绑定在虚拟的标签上，此处待定
+    // 2，v-for循环的时候用of更好，因为官网一句：它是最接近 JavaScript 迭代器的语法
+    // 3,想要数组改变并且页面刷新，不能通过操作数组下标来实现，而是使用数组的方法来操作
+    // shift(从数组开头删除一项),
+    // pop(从数组末尾删除一项),
+    // unshift(从数组开头添加一项),
+    // push(从数组末尾添加一项),
+    // splice(可以改变某一项，也可以指定删除某一项),
+    // reverse(翻转数组)
+    // 4,改变数组和对象的方法：
+        // 01，数组和对象都属于引用类型，因此可直接改数据的引用
+        // 02，调用 Vue.set 或 vm.$set Vue.set(vm.obj,"002","zhouke")
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            // list:[
+            //     {
+            //         id:"01",
+            //         text:"zhangqiang"
+            //     },{
+            //         id:"02",
+            //         text:"zhouke"
+            //     },{
+            //         id:"03",
+            //         text:"xiaohei"
+            //     }
+            // ]
+            obj:{
+                id:"001",
+                text:"zhangqiang"
+            }
+        }
+    })
+</script>
+</body>
+</html>
