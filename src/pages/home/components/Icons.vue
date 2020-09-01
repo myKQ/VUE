@@ -15,7 +15,7 @@
 
 <script>
 	export default {
-		name:'Icons',
+		name:'HomeIcons',
 		data () {
 			return {
 				swiperOption: {
@@ -81,10 +81,11 @@
 <style lang='stylus' scoped>
 	@import '~styles/varibles.styl'
 	@import '~styles/mixins.styl'
+	.icons >>> .swiper-container
+	    height: 0
+	    padding-bottom: 50%
 	.icons
-		overflow:hidden
-		height:0
-		padding-bottom:50%
+		margin-top: .1rem
 		.icon
 			position:relative
 			overflow:hidden
