@@ -30,7 +30,7 @@
             v-for="innerItem of item" 
             :key="innerItem.id"
           >
-              {{innerItem.name}}
+            {{innerItem.name}}
           </div>
         </div>
       </div>
@@ -53,8 +53,6 @@ export default {
   },
     // 不必要的形参也会出错，因此养成良好的写作习惯,
     // 这行注释写里面也出问题了，待定
-    // 好像一行也不能写太多，要换行
-    
   watch: {
     letter () {
       if(this.letter) {
