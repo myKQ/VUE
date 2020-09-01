@@ -18,25 +18,8 @@
 <script>
 export default {
   name: 'HomeWeekend',
-  data () {
-    return {
-      list:[{
-          id:'001',
-          imgUrl:'https://imgs.qunarzz.com/p/p90/201212/11/0478fce0303c5f3093835fbb.jpg_150x100_fa534adf.jpg',
-          title:'大连旅行，交通、酒店、景点一站式服务',
-          desc:'行程、奢简可调'
-        },{
-          id:'002',
-          imgUrl:'https://imgs.qunarzz.com/p/p79/201302/28/aed3769b586e4c6d93835fbb.jpg_150x100_6df8c9bc.jpg',
-          title:'大连旅行，交通、酒店、景点一站式服务',
-          desc:'行程、奢简可调'
-        },{
-          id:'003',
-          imgUrl:'https://imgs.qunarzz.com/p/p90/1809/e1/ae215d58a27fd202.jpg_750x500_a28a452a.jpg',
-          title:'大连旅行，交通、酒店、景点一站式服务',
-          desc:'行程、奢简可调'
-        }]
-    }
+  props:{
+    list:Array
   }
 }
 </script>

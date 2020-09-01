@@ -2,7 +2,7 @@
 	<div>
 		<div class="title">热门推销</div>
 		<ul>
-			<li class="item border-bottom" v-for="item of recommendList" :key="item.id">
+			<li class="item border-bottom" v-for="item of list" :key="item.id">
 				<img class="item-img" :src="item.imgUrl">
 				<div class="item-info">
 					<p class="item-title">{{item.title}}</p>
@@ -16,25 +16,8 @@
 <script>
 	export default {
 		name:'HomeRecommend',
-		data () {
-			return {
-				recommendList:[{
-					id:'001',
-					imgUrl:'https://imgs.qunarzz.com/p/p90/1809/e1/ae215d58a27fd202.jpg_750x500_a28a452a.jpg',
-					title:'大连旅行，交通、酒店、景点一站式服务',
-					desc:'行程、奢简可调'
-				},{
-					id:'002',
-					imgUrl:'https://imgs.qunarzz.com/p/p90/1809/e1/ae215d58a27fd202.jpg_750x500_a28a452a.jpg',
-					title:'大连旅行，交通、酒店、景点一站式服务',
-					desc:'行程、奢简可调'
-				},{
-					id:'003',
-					imgUrl:'https://imgs.qunarzz.com/p/p90/1809/e1/ae215d58a27fd202.jpg_750x500_a28a452a.jpg',
-					title:'大连旅行，交通、酒店、景点一站式服务',
-					desc:'行程、奢简可调'
-				}]
-			}
+		props:{
+			list:Array
 		}
 	}
 </script>
