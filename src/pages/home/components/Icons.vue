@@ -1,62 +1,86 @@
 <template>
 	<div class="icons">
-		<div class="icon">
-			<div class="icon-img">
-				<img src="//s.qunarzz.com/homenode/images/touchheader/hotel.png">
-			</div>
-			<p class="icon-text">热门</p>
-		</div>
-		<div class="icon">
-			<div class="icon-img">
-				<img src="//s.qunarzz.com/homenode/images/touchheader/hotel.png">
-			</div>
-			<p class="icon-text">热门</p>
-		</div>
-		<div class="icon">
-			<div class="icon-img">
-				<img src="//s.qunarzz.com/homenode/images/touchheader/hotel.png">
-			</div>
-			<p class="icon-text">热门</p>
-		</div>
-		<div class="icon">
-			<div class="icon-img">
-				<img src="//s.qunarzz.com/homenode/images/touchheader/hotel.png">
-			</div>
-			<p class="icon-text">热门</p>
-		</div>
-		<div class="icon">
-			<div class="icon-img">
-				<img src="//s.qunarzz.com/homenode/images/touchheader/hotel.png">
-			</div>
-			<p class="icon-text">热门</p>
-		</div>
-		<div class="icon">
-			<div class="icon-img">
-				<img src="//s.qunarzz.com/homenode/images/touchheader/hotel.png">
-			</div>
-			<p class="icon-text">热门</p>
-		</div>
-		<div class="icon">
-			<div class="icon-img">
-				<img src="//s.qunarzz.com/homenode/images/touchheader/hotel.png">
-			</div>
-			<p class="icon-text">热门</p>
-		</div>
-		<div class="icon">
-			<div class="icon-img">
-				<img src="//s.qunarzz.com/homenode/images/touchheader/hotel.png">
-			</div>
-			<p class="icon-text">热门</p>
-		</div>
+		<swiper :options="swiperOption">
+			<swiper-slide v-for="(page,index) of pages" :key="index">
+				<div class="icon" v-for="item of page" :key="item.id">
+					<div class="icon-img">
+						<img :src="item.imgUrl">
+					</div>
+					<p class="icon-text">{{item.desc}}</p>
+				</div>
+		    </swiper-slide>
+		</swiper>
 	</div>
 </template>
+
 <script>
 	export default {
-		name:'Icons'
+		name:'Icons',
+		data () {
+			return {
+				swiperOption: {
+			        autoplay: false
+			    },
+				iconList:[
+					{
+						id:'001',
+						imgUrl:'//s.qunarzz.com/homenode/images/touchheader/hotel.png',
+						desc:'热门景点2144444444444444'
+					},{
+						id:'002',
+						imgUrl:'//s.qunarzz.com/homenode/images/touchheader/hotel.png',
+						desc:'热门景点'
+					},{
+						id:'003',
+						imgUrl:'//s.qunarzz.com/homenode/images/touchheader/hotel.png',
+						desc:'热门景点'
+					},{
+						id:'004',
+						imgUrl:'//s.qunarzz.com/homenode/images/touchheader/hotel.png',
+						desc:'热门景点'
+					},{
+						id:'005',
+						imgUrl:'//s.qunarzz.com/homenode/images/touchheader/hotel.png',
+						desc:'热门景点'
+					},{
+						id:'006',
+						imgUrl:'//s.qunarzz.com/homenode/images/touchheader/hotel.png',
+						desc:'热门景点'
+					},{
+						id:'007',
+						imgUrl:'//s.qunarzz.com/homenode/images/touchheader/hotel.png',
+						desc:'热门景点'
+					},{
+						id:'008',
+						imgUrl:'//s.qunarzz.com/homenode/images/touchheader/hotel.png',
+						desc:'热门景点'
+					},{
+						id:'009',
+						imgUrl:'//s.qunarzz.com/homenode/images/touchheader/hotel.png',
+						desc:'热门景点'
+					}
+				]
+			}
+		},
+		computed:{
+			pages () {
+				const pages = []
+				this.iconList.forEach((item,index) => {
+					console.log(item,index)
+					const page = Math.floor(index/8)
+					if (!pages[page]) {
+			          pages[page] = []
+			        }
+					pages[page].push(item)
+				})
+				return pages
+			}
+		}
 	}
 </script>
 <style lang='stylus' scoped>
 	@import '~styles/varibles.styl'
+	@import '~styles/mixins.styl'
 	.icons
 		overflow:hidden
 		height:0
@@ -90,6 +114,7 @@
 				line-height: .44rem
 				text-align: center
 				color:$darkTextColor
+				ellipsis()
 				// display:flex
 				// justify-center:center
 					
