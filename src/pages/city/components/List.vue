@@ -5,7 +5,7 @@
         <div class="title border-topbottom">当前城市</div>
         <div class="button-list">
           <div class="button-wrapper">
-            <div class="button">北京</div>
+            <div class="button">{{this.$store.state.city}}</div>
           </div>
         </div>
       </div>
@@ -14,7 +14,9 @@
         <div class="button-list">
           <div class="button-wrapper" 
           v-for="item of hot" 
-          :key="item.id">
+          :key="item.id"
+          @click="selectClick(item.name)"
+          >
             <div class="button">{{item.name}}</div>
           </div>
         </div>
@@ -29,6 +31,7 @@
           <div class="item border-bottom" 
             v-for="innerItem of item" 
             :key="innerItem.id"
+            @click="selectClick(innerItem.name)"
           >
             {{innerItem.name}}
           </div>
@@ -47,13 +50,12 @@ export default {
       cities:Object,
       letter:String
   },
-  mounted () {
-    // 获取dome的方式
-    this.scroll = new BScroll(this.$refs.wrapper)
+  methods: {
+    selectClick (city) {
+      this.$store.dispatch('changeCity',city)
+      this.$router.push('/')
+    }
   },
-    // 不必要的形参也会出错，因此养成良好的写作习惯,
-    // 这行注释写里面也出问题了，待定
-    // 好像一行也不能写太多，要换行
   watch: {
     letter () {
       if(this.letter) {
@@ -61,6 +63,10 @@ export default {
         this.scroll.scrollToElement(element)
       }
     }
+  },
+  mounted () {
+    // 获取dome的方式
+    this.scroll = new BScroll(this.$refs.wrapper)
   }
 }
 </script>
